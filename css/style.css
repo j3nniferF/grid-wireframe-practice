@@ -1,70 +1,103 @@
 body {
-  display: flex;
-  justify-content: center;
   padding: 2rem;
-  background: #f2f2f2;
+  background: #bfc1c6;
   font-family: system-ui, Arial, sans-serif;
 }
 
 .container {
-  display: grid;
-  gap: 12px;
-  width: 260px;
-  padding: 12px;
   background: #bdbdbd;
-
-  grid-template-rows: auto auto 1fr auto auto;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
   grid-template-areas:
     "header"
-    "asideTop"
-    "main"
-    "asideBottom"
+    "asideLeft"
+    "article"
+    "asideRight"
     "footer";
 }
 
-header {
+.box {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  padding: 18px;
+}
+
+.box-header {
   grid-area: header;
   background: #7b2d5a;
 }
 
-.aside-top {
-  grid-area: asideTop;
-  background: #2f6f8f;
-}
-
-.columns {
-  grid-area: main;
-  background: #4aa36b;
-  padding: 10px;
-  display: grid;
-  gap: 10px;
-  grid-template-rows: repeat(3, auto);
-  border-radius: 4px;
-}
-
-.columns section {
-  background: #d64b76;
-}
-
-.aside-bottom {
-  grid-area: asideBottom;
-  background: #2f6f8f;
-}
-
-footer {
+.box-footer {
   grid-area: footer;
   background: #c56b2f;
 }
 
-header,
-aside,
-footer,
-.columns section {
+.box-aside {
+  min-height: 260px;
+}
+
+.aside-left {
+  background: #2f6f8f;
+}
+
+.aside-right {
+  background: #5fa8b5;
+}
+
+.box-article {
+  grid-area: article;
+  background: #4aa36b;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.article-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  border-radius: 4px;
-  font-weight: 600;
+  font-weight: 800;
   color: white;
+  letter-spacing: 1px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.column {
+  background: #d64b76;
+  border-radius: 8px;
+  padding: 18px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "asideLeft article asideRight"
+      "footer footer footer";
+  }
+
+  .box-aside {
+    min-height: 260px;
+  }
 }
